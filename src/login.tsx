@@ -1,27 +1,28 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+import classes from './login.module.css';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [username, setUsername] = React.useState('admin');
+  const [password, setPassword] = React.useState('test');
 
   const handleNavigation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (username === "admin" && password === "test") {
-      navigate("/list");
+    if (username === 'admin' && password === 'test') {
+      navigate('/list');
     } else {
-      alert("User / password not valid, psst... admin / test");
+      alert('User / password not valid, psst... admin / test');
     }
   };
 
   return (
     <>
-      <form onSubmit={handleNavigation}>
-        <h2>Hello from login page</h2>
-
-        <div>
+      <form className={classes.form} onSubmit={handleNavigation}>
+        <h2>Access</h2>
+        <div className={classes.flex}>
           <div>
             <label>Username: </label>
             <input
@@ -37,9 +38,8 @@ export const LoginPage: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          <button type="submit">Login</button>
         </div>
-
-        <button type="submit">Login</button>
       </form>
     </>
   );

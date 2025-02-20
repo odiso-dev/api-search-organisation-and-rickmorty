@@ -1,0 +1,28 @@
+.form {
+  width: fit-content;
+  padding: 24px;
+  box-shadow: 0px 0px 16px 8px #e7e7e7;
+  border-radius: 8px;
+  margin: 0 auto;
+  & input {
+    border-radius: 8px;
+    padding: 8px;
+    margin: 0 8px;
+    border: none;
+    box-shadow: inset 1px 0px 1px 2px #e3e3e3;
+  }
+  & button {
+    width: 50%;
+    align-self: center;
+    border-radius: 8px;
+    padding: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

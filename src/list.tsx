@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import classes from './list.module.css';
 
 interface MemberEntity {
   id: string;
@@ -18,11 +19,11 @@ export const ListPage: React.FC = () => {
 
   return (
     <>
-      <h2>Hello from List page</h2>+{" "}
-      <div className="list-user-list-container">
-        <span className="list-header">Avatar</span>
-        <span className="list-header">Id</span>
-        <span className="list-header">Name</span>
+      <h2>Hello from List page</h2>+{' '}
+      <div className={classes.listUserListContainer}>
+        <span className={classes.listHeader}>Avatar</span>
+        <span className={classes.listHeader}>Id</span>
+        <span className={classes.listHeader}>Name</span>
         {members.map((member) => (
           <>
             <img src={member.avatar_url} />
