@@ -19,7 +19,11 @@ export const ListPage: React.FC = () => {
 
   return (
     <>
-      <h2>Hello from List page</h2>+{' '}
+      <h2>Filter by organisation</h2>
+      <div>
+        <input type="text" placeholder="organistaion" />
+        <button>Search</button>
+      </div>
       <div className={classes.listUserListContainer}>
         <span className={classes.listHeader}>Avatar</span>
         <span className={classes.listHeader}>Id</span>

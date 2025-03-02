@@ -19,7 +19,7 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <>
+    <div className={classes.wrapperForm}>
       <form className={classes.form} onSubmit={handleNavigation}>
         <h2>Access</h2>
         <div className={classes.flex}>
@@ -41,6 +41,6 @@ export const LoginPage: React.FC = () => {
           <button type="submit">Login</button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
