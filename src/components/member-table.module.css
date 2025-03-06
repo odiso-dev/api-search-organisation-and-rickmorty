@@ -1,0 +1,11 @@
+.list-header {
+  background-color: #2f4858;
+  color: white;
+  font-weight: bold;
+}
+table {
+  width: min(800px, 100%);
+}
+img {
+  width: 80px;
+}

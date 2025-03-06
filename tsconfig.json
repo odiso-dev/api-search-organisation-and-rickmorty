@@ -4,13 +4,16 @@
     "module": "es6",
     "moduleResolution": "node",
     "declaration": false,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "jsx": "react",
     "noLib": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "plugins": [
       {
         "name": "typescript-plugin-css-modules"
