@@ -1,3 +1,10 @@
 import React from 'react';
 
-export const ButtonSearch: React.FC = () => <button>Search</button>;
+interface Props {
+  onclick: () => void;
+}
+
+export const ButtonSearch: React.FC<Props> = (props) => {
+  const { onclick } = props;
+  return <button onClick={onclick}>Search</button>;
+};

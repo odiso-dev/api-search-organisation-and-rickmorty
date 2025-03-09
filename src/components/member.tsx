@@ -3,7 +3,7 @@ import { MemberEntity } from './member.model';
 import { Link } from 'react-router-dom';
 
 interface Props {
-  member: Member;
+  member: MemberEntity;
 }
 
 export const Member: React.FC<Props> = (props) => {

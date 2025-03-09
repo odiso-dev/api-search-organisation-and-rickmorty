@@ -1,16 +1,21 @@
 import React from 'react';
 import classes from './member-table.module.css';
 import { Member } from './member';
+import { MemberEntity } from './member.model';
+// import { apiMembers } from '../api/api.members';
 
-export const MemberTable: React.FC = () => {
-  const [members, setMembers] = React.useState([]);
-  const [inputCurrentValue, setInputCurrentValue] = React.useState('');
+interface Props {
+  members: MemberEntity[];
+}
+
+export const MemberTable: React.FC = (props) => {
+  const { members } = props;
+  /* const [members, setMembers] = React.useState<MemberEntity[]>([]);
+  const [inputCurrentValue, setInputCurrentValue] = React.useState('lemoncode');
 
   React.useEffect(() => {
-    fetch(`https://api.github.com/orgs/lemoncode/members`)
-      .then((response) => response.json())
-      .then((json) => setMembers(json));
-  }, []);
+    apiMembers(inputCurrentValue).then(setMembers);
+  }, [inputCurrentValue]); */
 
   return (
     <table>

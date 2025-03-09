@@ -1,5 +1,10 @@
 import React from 'react';
 
-export const InputSearch: React.FC = () => (
-  <input type="text" placeholder="organistaion" />
-);
+interface Props {
+  onchange: () => void;
+}
+
+export const InputSearch: React.FC<Porps> = (props) => {
+  const { onchange } = props;
+  return <input onChange={onchange} type="text" placeholder="organistaion" />;
+};
