@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './member-table.module.css';
-import { Member } from './member';
+import { Member } from './member-row';
 import { MemberEntity } from './member.model';
 // import { apiMembers } from '../api/api.members';
 
@@ -10,13 +10,6 @@ interface Props {
 
 export const MemberTable: React.FC = (props) => {
   const { members } = props;
-  /* const [members, setMembers] = React.useState<MemberEntity[]>([]);
-  const [inputCurrentValue, setInputCurrentValue] = React.useState('lemoncode');
-
-  React.useEffect(() => {
-    apiMembers(inputCurrentValue).then(setMembers);
-  }, [inputCurrentValue]); */
-
   return (
     <table>
       <thead>

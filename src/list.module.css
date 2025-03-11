@@ -15,3 +15,10 @@
 .list-user-list-container img {
   width: 80px;
 }
+
+.search-items {
+  width: fit-content;
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+}

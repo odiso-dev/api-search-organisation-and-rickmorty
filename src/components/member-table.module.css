@@ -4,7 +4,7 @@
   font-weight: bold;
 }
 table {
-  width: min(800px, 100%);
+  width: 100%;
 }
 img {
   width: 80px;
