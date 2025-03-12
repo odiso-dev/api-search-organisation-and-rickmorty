@@ -8,7 +8,7 @@ interface Props {
   members: MemberEntity[];
 }
 
-export const MemberTable: React.FC = (props) => {
+export const MemberTable: React.FC<Props> = (props) => {
   const { members } = props;
   return (
     <table>

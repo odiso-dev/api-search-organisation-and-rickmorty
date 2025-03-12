@@ -3,9 +3,10 @@ import classes from './input-organisation.module.css';
 
 interface Props {
   onchange: () => void;
+  placeholder: string;
 }
 
-export const InputSearch: React.FC<Porps> = (props) => {
+export const InputSearch: React.FC<Props> = (props) => {
   const { onchange, placeholder } = props;
   return (
     <input

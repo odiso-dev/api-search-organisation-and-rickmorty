@@ -18,13 +18,30 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    // client: {
+    //   overlay: {
+    //     warnings: true,
+    //     errors: true,
+    //   },
+    // },
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        // loader: "babel-loader",
+        use: [
+          {
+            loader: "babel-loader",
+          },
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: false, // Asegúrate de que esta opción esté desactivada
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg)$/,
@@ -38,9 +55,7 @@ module.exports = {
         test: /\.css$/,
         exclude: /node_modules/,
         use: [
-          {
-            loader: "style-loader",
-          },
+          "style-loader",
           {
             loader: "css-loader",
             options: {

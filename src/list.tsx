@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { InputSearch } from './components/input-organisation';
 import { ButtonSearch } from './components/button-search';
 import { MemberTable } from './components/member-table';
-import { Member } from './components/member';
 import { apiMembers } from './api/api.members';
 import { debounce } from 'lodash';
 import { TableLayout } from './components/table-layout';
 import classes from './list.module.css';
+import { MemberEntity } from './components/member.model';
 
 export const ListPage: React.FC = () => {
   const [inputValue, setInputValue] = React.useState('lemoncode');
