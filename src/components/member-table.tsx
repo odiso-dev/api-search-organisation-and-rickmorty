@@ -1,11 +1,10 @@
 import React from 'react';
 import classes from './member-table.module.css';
 import { Member } from './member-row';
-import { MemberEntity } from './member.model';
-// import { apiMembers } from '../api/api.members';
+import { MemberVm } from '../member-row.vm';
 
 interface Props {
-  members: MemberEntity[];
+  members: MemberVm[];
 }
 
 export const MemberTable: React.FC<Props> = (props) => {

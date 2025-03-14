@@ -1,5 +1,6 @@
 import urlBase from '../env';
-import { MemberEntity } from '../components/member.model';
+import { MemberEntity } from './api.member.model';
+import { MemberVm } from '../member-row.vm';
 
 export const apiMembers = async (
   typeOrganisation: string
@@ -12,3 +13,11 @@ export const apiMembers = async (
     throw new Error(`** Failed conection API ${error} **`);
   }
 };
+
+export const emptyMember = (): MemberVm[] => [
+  {
+    login: '',
+    id: '',
+    avatar_url: '',
+  },
+];

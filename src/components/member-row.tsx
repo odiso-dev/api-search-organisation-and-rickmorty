@@ -1,9 +1,9 @@
 import React from 'react';
-import { MemberEntity } from './member.model';
 import { Link } from 'react-router-dom';
+import { MemberVm } from '../member-row.vm';
 
 interface Props {
-  member: MemberEntity;
+  member: MemberVm;
 }
 
 export const Member: React.FC<Props> = (props) => {

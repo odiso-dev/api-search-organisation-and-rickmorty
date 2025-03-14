@@ -8,5 +8,5 @@ if (container) {
   const root = createRoot(container);
   root.render(<App />);
 } else {
-  console.error("El contenedor 'root' no se encontró en el documento.");
+  console.error('root undefined');
 }
