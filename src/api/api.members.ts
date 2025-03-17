@@ -21,3 +21,26 @@ export const emptyMember = (): MemberVm[] => [
     avatar_url: '',
   },
 ];
+
+export const emptyMemberDetail = (): MemberEntity => ({
+  id: '',
+  login: '',
+  name: '',
+  avatar_url: '',
+  node_id: '',
+  gravatar_id: '',
+  url: '',
+  html_url: '',
+  followers_url: '',
+  following_url: '',
+  gists_url: '',
+  starred_url: '',
+  subscriptions_url: '',
+  organizations_url: '',
+  repos_url: '',
+  events_url: '',
+  received_events_url: '',
+  type: '',
+  user_view_type: '',
+  site_admin: false,
+});

@@ -1,5 +1,6 @@
 export interface MemberEntity {
   id: string;
+  name: string;
   login: string;
   avatar_url: string;
   node_id: string;

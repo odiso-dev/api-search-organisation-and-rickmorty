@@ -1,3 +1,7 @@
 body {
   font-family: 'Open Sans', serif;
 }
+a {
+  text-decoration: none;
+  color: #1c8dd5;
+}
