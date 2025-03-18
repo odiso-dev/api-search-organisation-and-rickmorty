@@ -13,7 +13,6 @@ export const DetailPage: React.FC = () => {
       fetch(`https://api.github.com/users/${id}`).then((response) =>
         response.json().then((data) => {
           setMember(data);
-          console.log(data);
         })
       );
     } catch (error) {
