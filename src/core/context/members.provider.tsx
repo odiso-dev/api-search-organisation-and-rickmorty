@@ -1,7 +1,7 @@
 import React from 'react';
-import { MemberVm } from './member-row.vm';
-import { apiMembers, emptyMember } from './api/api.members';
-import { mapMemberApiToMemberVm } from './member-row.mapper';
+import { MemberVm } from '@/member-row.vm';
+import { apiMembers, emptyMember } from '@/api';
+import { mapMemberApiToMemberVm } from '@/member-row.mapper';
 
 interface MembersContextType {
   members: MemberVm[];
@@ -23,10 +23,6 @@ export const MembersProvider: React.FC<Props> = ({ children }) => {
   const [apiOrganisationCurrentValue, setApiOrganisationCurrentValue] =
     React.useState('lemoncode');
   const [members, setMembers] = React.useState<MemberVm[]>(emptyMember());
-  console.warn(`first load `);
-  console.warn(members);
-  console.warn(apiOrganisationCurrentValue);
-  console.warn(setApiOrganisationCurrentValue);
 
   React.useEffect(() => {
     apiMembers(apiOrganisationCurrentValue).then((membersApi) => {

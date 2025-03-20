@@ -1,11 +1,11 @@
 import React from 'react';
-import { InputSearch } from './components/input-organisation';
-import { ButtonSearch } from './components/button-search';
-import { MemberTable } from './components/member-table';
+import { InputSearch } from '@/components/input-organisation';
+import { ButtonSearch } from '@/components/button-search';
+import { MemberTable } from '@/components/member-table';
 import { debounce } from 'lodash';
-import { TableLayout } from './components/table-layout';
+import { TableLayout } from '@/components/table-layout';
 import classes from './list.module.css';
-import { MembersContext } from './members.provider';
+import { MembersContext } from '@/core/context';
 
 export const ListPage: React.FC = () => {
   const {

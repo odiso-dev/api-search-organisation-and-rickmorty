@@ -1,20 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { LoginPage } from './login';
-import { ListPage } from './list';
-import { DetailPage } from './detail';
-import { MembersProvider } from './members.provider';
+import { RouterApp } from '@/core/router';
+import { MembersProvider } from '@/core/context';
 
 export const App = () => {
   return (
     <MembersProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/list" element={<ListPage />} />
-          <Route path="/detail/:id" element={<DetailPage />} />
-        </Routes>
-      </Router>
+      <RouterApp />
     </MembersProvider>
   );
 };

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { MemberEntity } from './api/api.member.model';
-import { emptyMemberDetail } from './api/api.members';
+import { MemberEntity } from '@/api';
+import { emptyMemberDetail } from '@/api';
+import { Image } from '@/components/image';
 import classes from './detail.module.css';
 
 export const DetailPage: React.FC = () => {
@@ -29,7 +30,11 @@ export const DetailPage: React.FC = () => {
       <div className={classes.memberCard}>
         <h2>{member.login}</h2>
         <p>{member.name}</p>
-        <img src={member.avatar_url} alt={member.login} />
+        <Image
+          src={member.avatar_url}
+          alt={member.login}
+          classname={classes.detailImg}
+        />
         <p>
           {member.type} {member.id}
         </p>
