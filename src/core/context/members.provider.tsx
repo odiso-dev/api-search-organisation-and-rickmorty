@@ -1,7 +1,7 @@
 import React from 'react';
-import { MemberVm } from '@/member-row.vm';
+import { MemberVm } from '@/pages/member-row.vm';
 import { apiMembers, emptyMember } from '@/api';
-import { mapMemberApiToMemberVm } from '@/member-row.mapper';
+import { mapMemberApiToMemberVm } from '@/pages/member-row.mapper';
 
 interface MembersContextType {
   members: MemberVm[];

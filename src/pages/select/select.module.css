@@ -1,0 +1,14 @@
+.layoutCards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  height: 90vh;
+}
+
+.layoutCards img {
+  width: 250px;
+  object-fit: scale-down;
+  display: block;
+  height: 300px;
+}

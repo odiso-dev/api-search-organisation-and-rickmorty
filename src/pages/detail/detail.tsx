@@ -4,6 +4,7 @@ import { MemberEntity } from '@/api';
 import { emptyMemberDetail } from '@/api';
 import { Image } from '@/components/image';
 import classes from './detail.module.css';
+import { routes } from '@/core/router';
 
 export const DetailPage: React.FC = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ export const DetailPage: React.FC = () => {
   return (
     <div className={classes.layoutMember}>
       <div className={classes.backPage}>
-        <Link to="/list">Back to list page</Link>
+        <Link to={routes.organisation}>Back to list page</Link>
       </div>
       <h1>Member detail</h1>
       <div className={classes.memberCard}>

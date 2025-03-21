@@ -1,11 +1,13 @@
 import React from 'react';
 import { RouterApp } from '@/core/router';
-import { MembersProvider } from '@/core/context';
+
+const OrgsApp: React.FC = () => {
+  return <RouterApp />;
+};
 
 export const App = () => {
   return (
-    <MembersProvider>
-      <RouterApp />
-    </MembersProvider>
+    <OrgsApp />
+    // <RickMortyApp/>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MemberVm } from '@/member-row.vm';
+import { MemberVm } from '@/pages/member-row.vm';
 import { Image } from './image';
 import classes from './member-row.module.css';
 /* MUI */

@@ -1,5 +1,7 @@
 export const routes = {
   root: '/',
-  list: '/list',
+  select: '/select',
+  rickandmorty: '/rickandmorty',
+  organisation: '/orgs',
   detail: '/detail/:id',
 };

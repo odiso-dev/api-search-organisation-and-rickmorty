@@ -1,6 +1,6 @@
 import urlBase from '../env';
 import { MemberEntity } from './api.member.model';
-import { MemberVm } from '../member-row.vm';
+import { MemberVm } from '../pages/member-row.vm';
 
 export const apiMembers = async (
   typeOrganisation: string

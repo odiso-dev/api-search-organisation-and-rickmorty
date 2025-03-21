@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './member-table.module.css';
 import { Member } from './member-row';
-import { MemberVm } from '../member-row.vm';
+import { MemberVm } from '../pages/member-row.vm';
 /* MUI */
 import {
   Table,
