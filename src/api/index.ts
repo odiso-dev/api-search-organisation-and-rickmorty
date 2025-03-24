@@ -1,2 +1,2 @@
-export * from './api.members';
-export * from './api.member.model';
+export * from './api.orgs-members';
+export * from './api.orgs-member.model';

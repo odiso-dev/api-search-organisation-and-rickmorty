@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LoginPage } from '@/pages/login';
-import { ListPage } from '@/pages/list';
+import { ListPage } from '@/pages/organisation';
 import { DetailPage } from '@/pages/detail';
 import { routes } from '@/core/router';
 import { SelectPage } from '@/pages/select';

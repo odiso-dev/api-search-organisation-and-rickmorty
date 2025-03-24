@@ -1,5 +1,5 @@
-import urlBase from '../env';
-import { MemberEntity } from './api.member.model';
+import urlBase from '../env-organisation';
+import { MemberEntity } from './api.orgs-member.model';
 import { MemberVm } from '../pages/member-row.vm';
 
 export const apiMembers = async (

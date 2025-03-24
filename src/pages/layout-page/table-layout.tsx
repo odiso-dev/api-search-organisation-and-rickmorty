@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const TableLayout: React.FC<Props> = (props) => {
+export const LayoutPage: React.FC<Props> = (props) => {
   const { children } = props;
-  return <div className={classes.tableLayout}>{children}</div>;
+  return <div className={classes.layoutPage}>{children}</div>;
 };

@@ -3,7 +3,7 @@ import { InputSearch } from '@/components/input-organisation';
 import { ButtonSearch } from '@/components/button-search';
 import { MemberTable } from '@/components/member-table';
 import { debounce } from 'lodash';
-import { TableLayout } from '@/components/table-layout';
+import { LayoutPage } from '@/pages/layout-page/table-layout';
 import classes from './list.module.css';
 import { MembersContext } from '@/core/context';
 
@@ -28,13 +28,13 @@ export const ListPage: React.FC = () => {
   };
 
   return (
-    <TableLayout>
+    <LayoutPage>
       <h2>Filter by organisation</h2>
       <div className={classes.searchItems}>
         <InputSearch onchange={handleInputSearch} placeholder={inputValue} />
         <ButtonSearch onclick={handleButtonSearch} />
       </div>
       <MemberTable members={members} />
-    </TableLayout>
+    </LayoutPage>
   );
 };

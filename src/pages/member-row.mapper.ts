@@ -1,4 +1,4 @@
-import * as apiMemberModel from '../api/api.member.model';
+import * as apiMemberModel from '../api/api.orgs-member.model';
 import * as memberVm from './member-row.vm';
 
 export const mapMemberApiToMemberVm = (
