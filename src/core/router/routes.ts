@@ -4,4 +4,5 @@ export const routes = {
   rickandmorty: '/rickandmorty',
   organisation: '/orgs',
   detail: '/detail/:id',
+  detailCharacter: '/character/:id',
 };
