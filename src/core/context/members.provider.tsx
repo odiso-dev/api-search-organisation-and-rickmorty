@@ -13,13 +13,13 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const MembersContext = React.createContext<MembersContextType>({
+export const MembersListContext = React.createContext<MembersContextType>({
   members: emptyMember(),
   apiOrganisationCurrentValue: 'lemoncode',
   setApiOrganisationCurrentValue: () => {},
 });
 
-export const MembersProvider: React.FC<Props> = ({ children }) => {
+export const MembersListProvider: React.FC<Props> = ({ children }) => {
   const [apiOrganisationCurrentValue, setApiOrganisationCurrentValue] =
     React.useState('lemoncode');
   const [members, setMembers] = React.useState<MemberVm[]>(emptyMember());
@@ -31,7 +31,7 @@ export const MembersProvider: React.FC<Props> = ({ children }) => {
   }, [apiOrganisationCurrentValue]);
 
   return (
-    <MembersContext.Provider
+    <MembersListContext.Provider
       value={{
         members,
         apiOrganisationCurrentValue: apiOrganisationCurrentValue,
@@ -39,6 +39,6 @@ export const MembersProvider: React.FC<Props> = ({ children }) => {
       }}
     >
       {children}
-    </MembersContext.Provider>
+    </MembersListContext.Provider>
   );
 };

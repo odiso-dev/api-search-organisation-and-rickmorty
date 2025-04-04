@@ -5,16 +5,16 @@ import { ButtonSearch } from '@/components/button-search';
 import { MemberTable } from '@/components/member-table';
 import { debounce } from 'lodash';
 import { LayoutPage } from '@/pages/layout-page/table-layout';
-import classes from './list.module.css';
-import { MembersContext } from '@/core/context';
+import classes from './orgs.module.css';
+import { MembersListContext } from '@/core/context';
 import { routes } from '@/core/router';
 
-export const ListPage: React.FC = () => {
+export const OrgsPage: React.FC = () => {
   const {
     members,
     apiOrganisationCurrentValue: fetchCurrentValue,
     setApiOrganisationCurrentValue: setFetchCurrentValue,
-  } = React.useContext(MembersContext);
+  } = React.useContext(MembersListContext);
 
   const [inputValue, setInputValue] = React.useState(fetchCurrentValue);
   const inputRef = React.useRef<HTMLInputElement>(null);

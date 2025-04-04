@@ -1,21 +1,20 @@
+import { ButtonSearch } from '@/components/button-search';
+import { InputSearch } from '@/components/input-organisation';
+import { CharacterListContext } from '@/core/context/character.provider';
+import { routes } from '@/core/router';
+import { debounce } from 'lodash';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { LayoutPage } from '../layout-page/table-layout';
-import { apiCharacters } from '@/api/api.rickandmorty';
-import { emptyCharacterMapper } from '@/api/api.rickandmorty';
-import { mapApiCharacterToCharacterVm } from '@/pages/character.mapper';
 import classes from './rickandmorty.module.css';
-import { InputSearch } from '@/components/input-organisation';
-import { ButtonSearch } from '@/components/button-search';
-import { debounce } from 'lodash';
-import { routes } from '@/core/router';
 /* MUI */
-import { Grid, Card, CardContent, CardMedia } from '@mui/material/';
+import { CardCharacter } from '@/components/card-character';
+import { Grid } from '@mui/material/';
 
 export const RickAndMorty: React.FC = () => {
-  const [characters, setCharacters] = React.useState(emptyCharacterMapper());
-  const [inputValue, setInputValue] = React.useState('character');
-  const [fetchCurrentValue, setFetchCurrentValue] = React.useState('');
+  const { characters, apiDefaultValue, setApiDefaultValue } =
+    React.useContext(CharacterListContext);
+  const [inputValue, setInputValue] = React.useState(apiDefaultValue);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const handleInputSearch = debounce(
@@ -26,19 +25,18 @@ export const RickAndMorty: React.FC = () => {
   );
 
   const handleButtonSearch = () => {
-    console.log(inputValue);
-    setFetchCurrentValue(inputValue);
+    setApiDefaultValue(inputValue);
   };
 
   React.useEffect(() => {
-    apiCharacters(`?name=${fetchCurrentValue}`).then((data) =>
-      setCharacters(mapApiCharacterToCharacterVm(data))
-    );
+    setInputValue(apiDefaultValue);
+  }, [apiDefaultValue]);
 
+  React.useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
-  }, [fetchCurrentValue]);
+  }, []);
 
   return (
     <LayoutPage>
@@ -56,19 +54,8 @@ export const RickAndMorty: React.FC = () => {
       </div>
       <Grid container spacing={3} sx={{ gap: '50px', marginTop: 'auto' }}>
         {characters.map((character) => (
-          <Link to={`/character/${character.id}`}>
-            <Card
-              key={character.id}
-              sx={{ borderRadius: '8px', padding: '16px' }}
-            >
-              <h3>{character.name}</h3>
-              <h4>{character.gender}</h4>
-              <CardContent sx={{ textAlign: 'center' }}>
-                <CardMedia component="img" image={character.image}></CardMedia>
-                <p>{character.status}</p>
-                <p>{character.species}</p>
-              </CardContent>
-            </Card>
+          <Link to={`/character/${character.id}`} key={character.id}>
+            <CardCharacter character={character} />
           </Link>
         ))}
       </Grid>

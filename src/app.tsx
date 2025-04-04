@@ -6,8 +6,5 @@ const OrgsApp: React.FC = () => {
 };
 
 export const App = () => {
-  return (
-    <OrgsApp />
-    // <RickMortyApp/>
-  );
+  return <OrgsApp />;
 };

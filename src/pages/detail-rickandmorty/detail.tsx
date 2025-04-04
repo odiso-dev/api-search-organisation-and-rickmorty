@@ -13,7 +13,6 @@ export const DetailCharacter: React.FC = () => {
   const [character, setCharacter] = React.useState<CharacterVm>(
     emptyDetailCharacter()
   );
-  console.log(id);
 
   React.useEffect(() => {
     try {

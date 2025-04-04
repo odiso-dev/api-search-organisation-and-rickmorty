@@ -2,7 +2,7 @@ export const routes = {
   root: '/',
   select: '/select',
   rickandmorty: '/rickandmorty',
-  organisation: '/orgs',
+  organisation: '/organisation',
   detail: '/detail/:id',
   detailCharacter: '/character/:id',
 };
