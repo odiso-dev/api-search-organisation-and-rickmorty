@@ -12,29 +12,22 @@ import { CharacterListProvider } from '@/core/context/character.provider';
 
 export const RouterApp: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path={routes.root} element={<LoginPage />} />
-        <Route path={routes.select} element={<SelectPage />} />
-        <Route
-          path={routes.organisation}
-          element={
-            <MembersListProvider>
-              <OrgsPage />
-            </MembersListProvider>
-          }
-        />
-        <Route
-          path={routes.rickandmorty}
-          element={
-            <CharacterListProvider>
-              <RickAndMorty />
-            </CharacterListProvider>
-          }
-        />
-        <Route path={routes.detail} element={<DetailPage />} />
-        <Route path={routes.detailCharacter} element={<DetailCharacter />} />
-      </Routes>
-    </Router>
+    <MembersListProvider>
+      <CharacterListProvider>
+        <Router>
+          <Routes>
+            <Route path={routes.root} element={<LoginPage />} />
+            <Route path={routes.select} element={<SelectPage />} />
+            <Route path={routes.organisation} element={<OrgsPage />} />
+            <Route path={routes.rickandmorty} element={<RickAndMorty />} />
+            <Route path={routes.detail} element={<DetailPage />} />
+            <Route
+              path={routes.detailCharacter}
+              element={<DetailCharacter />}
+            />
+          </Routes>
+        </Router>
+      </CharacterListProvider>
+    </MembersListProvider>
   );
 };

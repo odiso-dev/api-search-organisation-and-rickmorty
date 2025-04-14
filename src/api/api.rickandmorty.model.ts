@@ -1,4 +1,14 @@
-export interface characterEntity {
+export interface ApiCharacterResponse {
+  info: {
+    count: number;
+    pages: number;
+    next: string;
+    prev: null | string;
+  };
+  results: CharacterEntity[];
+}
+
+export interface CharacterEntity {
   id: number;
   name: string;
   status: string;
@@ -17,4 +27,13 @@ export interface characterEntity {
   episode: string[];
   url: string;
   created: string;
+}
+
+export interface Pagination {
+  info: {
+    count: number;
+    pages: number;
+    next: string;
+    prev: null | string;
+  };
 }

@@ -1,12 +1,17 @@
-import { characterEntity } from './api.rickandmorty.model';
+import { ApiCharacterResponse } from './api.rickandmorty.model';
 import { CharacterVm } from '@/pages/character.vm';
 import urlApi from '@/env-rickandmorty';
 
-export const apiCharacters = (nameCharacter): Promise<characterEntity[]> => {
+export const apiResponseCharacters = (
+  numberPage: string,
+  nameCharacter: string
+): Promise<ApiCharacterResponse> => {
   try {
-    return fetch(`${urlApi}${nameCharacter}`)
+    //const old = `${urlApi}?page=${numberPage}&${nameCharacter}`
+    const constructedUrl = `${urlApi}?page=${numberPage}&name=${nameCharacter}`;
+    return fetch(constructedUrl)
       .then((response) => response.json())
-      .then((data) => data?.results);
+      .then((data) => data);
   } catch (error) {
     throw new Error(`** Failed conection API ${error} **`);
   }
@@ -32,8 +37,8 @@ export const emptyDetailCharacter = (): CharacterVm => ({
   image: '',
 });
 
-export const emptyCharacter = (): characterEntity => ({
-  id: 0,
+export const emptyApiResponseCharacters = (): ApiCharacterResponse => ({
+  /* id: 0,
   name: 'string',
   status: 'string',
   species: 'string',
@@ -50,5 +55,34 @@ export const emptyCharacter = (): characterEntity => ({
   image: 'string',
   episode: [''],
   url: 'string',
-  created: 'string',
+  created: 'string', */
+
+  info: {
+    count: 0,
+    pages: 0,
+    next: '',
+    prev: '',
+  },
+  results: [
+    {
+      id: 0,
+      name: '',
+      status: '',
+      species: '',
+      type: '',
+      gender: '',
+      origin: {
+        name: '',
+        url: '',
+      },
+      location: {
+        name: '',
+        url: '',
+      },
+      image: '',
+      episode: [''],
+      url: '',
+      created: '',
+    },
+  ],
 });
