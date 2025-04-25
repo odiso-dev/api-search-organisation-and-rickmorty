@@ -1,20 +1,26 @@
+import urlApi from '@/env-rickandmorty';
 import { ApiCharacterResponse } from './api.rickandmorty.model';
 import { CharacterVm } from '@/pages/character.vm';
-import urlApi from '@/env-rickandmorty';
+import { PaginationVm } from '@/pages/pagination.vm';
 
 export const apiResponseCharacters = (
-  numberPage: string,
-  nameCharacter: string
+  nameCharacter: string = ''
 ): Promise<ApiCharacterResponse> => {
   try {
-    //const old = `${urlApi}?page=${numberPage}&${nameCharacter}`
-    const constructedUrl = `${urlApi}?page=${numberPage}&name=${nameCharacter}`;
+    const constructedUrl = `${urlApi}${nameCharacter}`;
+
     return fetch(constructedUrl)
       .then((response) => response.json())
       .then((data) => data);
   } catch (error) {
-    throw new Error(`** Failed conection API ${error} **`);
+    throw new Error(`** Failed conection to API ${error} **`);
   }
+};
+
+export const apiNextPage = (nextPage) => {
+  return fetch(nextPage)
+    .then((response) => response.json())
+    .then((data) => data);
 };
 
 export const emptyCharacterMapper = (): CharacterVm[] => [
@@ -37,26 +43,7 @@ export const emptyDetailCharacter = (): CharacterVm => ({
   image: '',
 });
 
-export const emptyApiResponseCharacters = (): ApiCharacterResponse => ({
-  /* id: 0,
-  name: 'string',
-  status: 'string',
-  species: 'string',
-  type: 'string',
-  gender: 'string',
-  origin: {
-    name: 'string',
-    url: 'string',
-  },
-  location: {
-    name: 'string',
-    url: 'string',
-  },
-  image: 'string',
-  episode: [''],
-  url: 'string',
-  created: 'string', */
-
+export const emptyApiResponse = (): ApiCharacterResponse => ({
   info: {
     count: 0,
     pages: 0,
@@ -85,4 +72,10 @@ export const emptyApiResponseCharacters = (): ApiCharacterResponse => ({
       created: '',
     },
   ],
+});
+
+export const emptyPagination = (): PaginationVm => ({
+  pages: 0,
+  next: '',
+  prev: '',
 });

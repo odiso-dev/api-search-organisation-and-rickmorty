@@ -8,3 +8,21 @@
   height: 70vh;
   overflow: auto;
 }
+.alive {
+  background-color: #2dff2d17 !important;
+  box-shadow: 0px 0px 16px 3px #2dff2dcf !important;
+}
+.dead {
+  background-color: #fa837a17 !important;
+  box-shadow: 0px 0px 16px 3px #fa837a !important;
+}
+.unknown {
+  background-color: #f0950d17 !important;
+  box-shadow: 0px 0px 16px 3px #f0950d !important;
+}
+.flex {
+  display: flex;
+  justify-content: space-around;
+  width: 350px;
+  margin: 30px auto;
+}

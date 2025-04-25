@@ -1,4 +1,4 @@
-const URL_BASE_API = `https://rickandmortyapi.com/api/character/`;
+const URL_BASE_API = `https://rickandmortyapi.com/api/character/?page=1&name=`;
 export default URL_BASE_API;
 
-// https://rickandmortyapi.com/api/character/?page=3&name=rick
+//https://rickandmortyapi.com/api/character/?page=1&name=

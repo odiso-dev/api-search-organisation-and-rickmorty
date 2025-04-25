@@ -1,23 +1,48 @@
-import React from 'react';
+import React /* , { Dispatch, SetStateAction } */ from 'react';
+
 import { CharacterVm } from '@/pages/character.vm';
-import { emptyCharacterMapper } from '@/api/api.rickandmorty';
-import { apiResponseCharacters } from '@/api/api.rickandmorty';
+import {
+  emptyCharacterMapper,
+  /* apiResponseCharacters, */
+  /* emptyPagination, */
+  /* apiNextPage, */
+} from '@/api/api.rickandmorty';
 import { mapApiCharactersResponseToCharacterVm } from '@/pages/character.mapper';
+// import { mapApiCharactersResponseToPaginationVM } from '@/pages/pagination.mapper';
+// import { PaginationVm } from '@/pages/pagination.vm';
+
+interface Info {
+  count: number;
+  pages: number;
+  prev: string | null;
+}
 
 interface CharacterContextType {
   characters: CharacterVm[];
   apiDefaultValue: string;
   setApiDefaultValue: (value: string) => void;
-  page: string;
-  setPage: (value: string) => void;
+  nextPage: string | null;
+  prevPage: string | null;
+  setNextPage: (value: string) => void;
+  setPrevPage: (value: string) => void;
+  info: any;
+  urlApiBase: string;
+  setUrlApiBase: (value: string) => void;
+  setInputVal: (value: string) => void;
 }
 
 export const CharacterListContext = React.createContext<CharacterContextType>({
   characters: emptyCharacterMapper(),
   apiDefaultValue: '',
   setApiDefaultValue: () => {},
-  page: '',
-  setPage: () => {},
+  nextPage: '',
+  prevPage: '',
+  setNextPage: () => {},
+  setPrevPage: () => {},
+  info: {},
+  urlApiBase: '',
+  setUrlApiBase: () => {},
+  setInputVal: () => {},
 });
 
 interface Props {
@@ -26,22 +51,40 @@ interface Props {
 
 export const CharacterListProvider: React.FC<Props> = (props) => {
   const { children } = props;
-  // const inputDefaultValue: string = '';
+
   const [apiDefaultValue, setApiDefaultValue] = React.useState('');
   const [characters, setCharacters] = React.useState<CharacterVm[]>(
     emptyCharacterMapper()
   );
-  const [page, setPage] = React.useState('1');
-  console.warn(page);
+  const [nextPage, setNextPage] = React.useState<string | null>(null);
+  const [prevPage, setPrevPage] = React.useState<string | null>(null);
+  // const [countPrevPage, setCountPrevPage] = React.useState('');
+  // const [countNextPage, setCountNextPage] = React.useState('');
+  const [info, setInfo] = React.useState<Info | null>(null);
+  const [inputVal, setInputVal] = React.useState('');
+  const [urlApiBase, setUrlApiBase] = React.useState(
+    `https://rickandmortyapi.com/api/character/?page=1&name=${apiDefaultValue}`
+  );
+  // console.log(urlApiBase);
+  // console.log(info);
 
   React.useEffect(() => {
-    apiResponseCharacters(page, apiDefaultValue).then((data) =>
-      setCharacters(mapApiCharactersResponseToCharacterVm(data))
-    );
-    apiResponseCharacters(page, apiDefaultValue).then((data) =>
-      console.log(data)
-    );
-  }, [page, apiDefaultValue]);
+    /* apiResponseCharacters(apiDefaultValue).then((data) => {
+      setInfo(data?.info || null);
+      setCharacters(mapApiCharactersResponseToCharacterVm(data));
+      setNextPage(data?.info?.next || null);
+      setPrevPage(data?.info?.prev || null);
+    }); */
+
+    fetch(urlApiBase)
+      .then((response) => response.json())
+      .then((data) => {
+        setInfo(data?.info || null);
+        setCharacters(mapApiCharactersResponseToCharacterVm(data));
+        setNextPage(data?.info?.next || null);
+        setPrevPage(data?.info?.prev || null);
+      });
+  }, [apiDefaultValue, urlApiBase, inputVal, prevPage, nextPage]);
 
   return (
     <CharacterListContext.Provider
@@ -49,8 +92,14 @@ export const CharacterListProvider: React.FC<Props> = (props) => {
         characters,
         apiDefaultValue,
         setApiDefaultValue,
-        page,
-        setPage,
+        nextPage,
+        prevPage,
+        setNextPage,
+        setPrevPage,
+        info,
+        urlApiBase,
+        setUrlApiBase,
+        setInputVal,
       }}
     >
       {children}

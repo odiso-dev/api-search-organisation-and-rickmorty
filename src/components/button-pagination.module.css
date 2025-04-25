@@ -1,0 +1,27 @@
+.btn {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.btn_prev::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-left: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  transform: rotate(45deg);
+  margin: 0 8px;
+  vertical-align: middle;
+}
+.btn_next::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-right: 2px solid #000000;
+  border-top: 2px solid #000000;
+  transform: rotate(45deg);
+  margin: 0 8px;
+  vertical-align: middle;
+}

@@ -19,6 +19,10 @@ export const OrgsPage: React.FC = () => {
   const [inputValue, setInputValue] = React.useState(fetchCurrentValue);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
+  const click = (e) => {
+    e.target.value = '';
+  };
+
   const handleInputSearch = debounce(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.target.value);
@@ -26,7 +30,8 @@ export const OrgsPage: React.FC = () => {
     1000
   );
 
-  const handleButtonSearch = () => {
+  const handleButtonSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setFetchCurrentValue(inputValue);
   };
 
@@ -40,14 +45,15 @@ export const OrgsPage: React.FC = () => {
     <LayoutPage>
       <Link to={routes.select}>Back to select</Link>
       <h2>Filter by organisation</h2>
-      <div className={classes.searchItems}>
+      <form className={classes.searchItems}>
         <InputSearch
           onchange={handleInputSearch}
           placeholder={inputValue}
           inputRef={inputRef}
+          click={click}
         />
         <ButtonSearch onclick={handleButtonSearch} />
-      </div>
+      </form>
       <MemberTable members={members} />
     </LayoutPage>
   );

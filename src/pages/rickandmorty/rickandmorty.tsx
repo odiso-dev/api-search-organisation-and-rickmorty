@@ -8,13 +8,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { LayoutPage } from '../layout-page/table-layout';
 import classes from './rickandmorty.module.css';
-import { Pagination } from './pagination';
+import classStyleMain from '@/styles.css';
+import { BtnPagination } from '@/components/button.pagination';
+import classBtn from '@/components/button-pagination.module.css';
+// import { emptyPagination } from '@/api/api.rickandmorty';
 /* MUI */
 import { Grid } from '@mui/material/';
 
 export const RickAndMorty: React.FC = () => {
-  const { characters, apiDefaultValue, setApiDefaultValue, page, setPage } =
-    React.useContext(CharacterListContext);
+  const {
+    characters,
+    apiDefaultValue,
+    prevPage,
+    nextPage,
+    info,
+    urlApiBase,
+    setUrlApiBase,
+    setInputVal,
+  } = React.useContext(CharacterListContext);
 
   const [inputValue, setInputValue] = React.useState(apiDefaultValue);
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -23,28 +34,32 @@ export const RickAndMorty: React.FC = () => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.target.value);
     },
-    1000
+    300
   );
-  // console.warn(`page=> ${page}`);
-  const handleButtonSearch = () => {
-    setApiDefaultValue(inputValue.trim().toLowerCase());
+  const click = (e) => {
+    e.target.value = '';
+  };
+
+  const handleButtonSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setInputVal(inputValue);
+    setUrlApiBase(`${urlApiBase}${inputValue}`);
+    console.log(urlApiBase);
   };
 
   const handlerPrevPage = () => {
-    let number = parseInt(page);
-    number -= 1;
-    setPage(number.toString());
+    if (prevPage) {
+      console.log(prevPage);
+      setUrlApiBase(prevPage);
+    }
   };
 
   const handlerNextPage = () => {
-    let number = parseInt(page);
-    number += 1;
-    setPage(number.toString());
+    if (nextPage) {
+      console.log(nextPage);
+      setUrlApiBase(nextPage);
+    }
   };
-
-  React.useEffect(() => {
-    setInputValue(apiDefaultValue);
-  }, [page, apiDefaultValue]);
 
   React.useEffect(() => {
     if (inputRef.current) {
@@ -53,15 +68,18 @@ export const RickAndMorty: React.FC = () => {
   }, []);
 
   return (
-    <LayoutPage>
-      <Link to={routes.select}>Back to select</Link>
-      <h1>Filter by character name</h1>
+    <LayoutPage classname={classes.rickandmortyBackground}>
+      <Link className={classStyleMain.backPage} to={routes.select}>
+        Back to select
+      </Link>
+      <h1>Rick and Morty search characters</h1>
       <div>
         <form className={classes.searchItems}>
           <InputSearch
             onchange={handleInputSearch}
             placeholder={inputValue}
             inputRef={inputRef}
+            click={click}
           />
           <ButtonSearch onclick={handleButtonSearch} />
         </form>
@@ -74,11 +92,36 @@ export const RickAndMorty: React.FC = () => {
       >
         {characters.map((character) => (
           <Link to={`/character/${character.id}`} key={character.id}>
-            <CardCharacter character={character} />
+            <CardCharacter
+              character={character}
+              classname={`${
+                character.status === 'Alive' ? classes.alive : null
+              } ${character.status === 'Dead' ? classes.dead : null} ${
+                character.status === 'unknown' ? classes.unknown : null
+              }`}
+            />
           </Link>
         ))}
       </Grid>
-      <Pagination onclickPrev={handlerPrevPage} onclickNext={handlerNextPage} />
+      <div className={classes.flex}>
+        <BtnPagination
+          onclickPrev={handlerPrevPage}
+          classname={`${classBtn.btnPrev} ${classBtn.btn}`}
+          isDisabled={!info?.prev ? true : false}
+        >
+          Prev
+        </BtnPagination>
+        <p>{`${info?.pages ? info?.pages - info.pages + 1 : null} of ${
+          info?.pages ? info?.pages : null
+        }`}</p>
+        <BtnPagination
+          onclickNext={handlerNextPage}
+          classname={`${classBtn.btnNext} ${classBtn.btn}`}
+          isDisabled={!info?.next ? true : false}
+        >
+          Next
+        </BtnPagination>
+      </div>
     </LayoutPage>
   );
 };
