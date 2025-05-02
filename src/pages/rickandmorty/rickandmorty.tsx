@@ -22,9 +22,12 @@ export const RickAndMorty: React.FC = () => {
     prevPage,
     nextPage,
     info,
-    urlApiBase,
     setUrlApiBase,
-    setInputVal,
+    countPrevPage,
+    countNextPage,
+    setCountPrevPage,
+    setCountNextPage,
+    setApiDefaultValue,
   } = React.useContext(CharacterListContext);
 
   const [inputValue, setInputValue] = React.useState(apiDefaultValue);
@@ -36,28 +39,38 @@ export const RickAndMorty: React.FC = () => {
     },
     300
   );
+
   const click = (e) => {
     e.target.value = '';
   };
 
   const handleButtonSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setInputVal(inputValue);
-    setUrlApiBase(`${urlApiBase}${inputValue}`);
-    console.log(urlApiBase);
+    setApiDefaultValue(inputValue);
+    setUrlApiBase(
+      `https://rickandmortyapi.com/api/character/?page=1&name=${inputValue}`
+    );
+
+    setCountPrevPage(1);
+    setCountNextPage(info?.pages ?? 1);
   };
 
   const handlerPrevPage = () => {
     if (prevPage) {
-      console.log(prevPage);
       setUrlApiBase(prevPage);
+      setCountPrevPage((prevCount: number | null) =>
+        prevCount !== null ? prevCount - 1 : (info?.pages || 1) + 1
+      );
     }
   };
-
   const handlerNextPage = () => {
     if (nextPage) {
-      console.log(nextPage);
       setUrlApiBase(nextPage);
+
+      console.warn(`nextPage=> ${nextPage}`);
+      setCountPrevPage((prevCount: number | null) =>
+        prevCount !== null ? prevCount + 1 : (info?.pages || 1) + 1
+      );
     }
   };
 
@@ -103,21 +116,23 @@ export const RickAndMorty: React.FC = () => {
           </Link>
         ))}
       </Grid>
+
       <div className={classes.flex}>
         <BtnPagination
           onclickPrev={handlerPrevPage}
-          classname={`${classBtn.btnPrev} ${classBtn.btn}`}
-          isDisabled={!info?.prev ? true : false}
+          classname={`${classBtn.btnPrev} ${classBtn.btn} ${
+            !info?.prev ? classBtn.btnDisabled : ''
+          }`}
+          isDisabled={!info?.prev}
         >
           Prev
         </BtnPagination>
-        <p>{`${info?.pages ? info?.pages - info.pages + 1 : null} of ${
-          info?.pages ? info?.pages : null
-        }`}</p>
+
+        <p>{`${countPrevPage ?? 0} of ${countNextPage ?? 0}`}</p>
         <BtnPagination
           onclickNext={handlerNextPage}
           classname={`${classBtn.btnNext} ${classBtn.btn}`}
-          isDisabled={!info?.next ? true : false}
+          isDisabled={!info?.next}
         >
           Next
         </BtnPagination>

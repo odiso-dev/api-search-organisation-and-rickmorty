@@ -15,7 +15,7 @@ export const CardCharacter: React.FC<Props> = (props) => {
       sx={{ borderRadius: '8px', padding: '16px', scale: '.9' }}
       className={classname}
     >
-      <h2>{character.name}</h2>
+      <h2 style={{ width: '24ch' }}>{character.name}</h2>
       <h3>{character.gender}</h3>
       <CardContent sx={{ textAlign: 'center' }}>
         <CardMedia component="img" image={character.image}></CardMedia>

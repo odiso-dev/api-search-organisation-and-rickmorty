@@ -28,7 +28,15 @@ interface CharacterContextType {
   info: any;
   urlApiBase: string;
   setUrlApiBase: (value: string) => void;
-  setInputVal: (value: string) => void;
+  // setUrlApiBase: (value: string | ((prevValue: string) => string)) => void;
+  countPrevPage: number | null;
+  countNextPage: number | null;
+  setCountPrevPage: (
+    value: number | ((prevValue: number | null) => number)
+  ) => void;
+  setCountNextPage: (
+    value: number | ((prevValue: number | null) => number)
+  ) => void;
 }
 
 export const CharacterListContext = React.createContext<CharacterContextType>({
@@ -42,7 +50,10 @@ export const CharacterListContext = React.createContext<CharacterContextType>({
   info: {},
   urlApiBase: '',
   setUrlApiBase: () => {},
-  setInputVal: () => {},
+  countPrevPage: 0,
+  setCountPrevPage: () => {},
+  countNextPage: 0,
+  setCountNextPage: () => {},
 });
 
 interface Props {
@@ -56,17 +67,14 @@ export const CharacterListProvider: React.FC<Props> = (props) => {
   const [characters, setCharacters] = React.useState<CharacterVm[]>(
     emptyCharacterMapper()
   );
-  const [nextPage, setNextPage] = React.useState<string | null>(null);
   const [prevPage, setPrevPage] = React.useState<string | null>(null);
-  // const [countPrevPage, setCountPrevPage] = React.useState('');
-  // const [countNextPage, setCountNextPage] = React.useState('');
+  const [nextPage, setNextPage] = React.useState<string | null>(null);
+  const [countPrevPage, setCountPrevPage] = React.useState<number | null>(1);
+  const [countNextPage, setCountNextPage] = React.useState<number | null>(0);
   const [info, setInfo] = React.useState<Info | null>(null);
-  const [inputVal, setInputVal] = React.useState('');
   const [urlApiBase, setUrlApiBase] = React.useState(
     `https://rickandmortyapi.com/api/character/?page=1&name=${apiDefaultValue}`
   );
-  // console.log(urlApiBase);
-  // console.log(info);
 
   React.useEffect(() => {
     /* apiResponseCharacters(apiDefaultValue).then((data) => {
@@ -83,8 +91,10 @@ export const CharacterListProvider: React.FC<Props> = (props) => {
         setCharacters(mapApiCharactersResponseToCharacterVm(data));
         setNextPage(data?.info?.next || null);
         setPrevPage(data?.info?.prev || null);
+
+        setCountNextPage(data?.info?.pages ?? 1);
       });
-  }, [apiDefaultValue, urlApiBase, inputVal, prevPage, nextPage]);
+  }, [urlApiBase, apiDefaultValue]);
 
   return (
     <CharacterListContext.Provider
@@ -99,7 +109,10 @@ export const CharacterListProvider: React.FC<Props> = (props) => {
         info,
         urlApiBase,
         setUrlApiBase,
-        setInputVal,
+        countPrevPage,
+        setCountPrevPage,
+        countNextPage,
+        setCountNextPage,
       }}
     >
       {children}

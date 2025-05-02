@@ -1,8 +1,15 @@
 .btn {
   font-size: 24px;
   cursor: pointer;
+  border: none;
+  background-color: #6fe335;
+  border-radius: 4px;
+  padding: 0 16px;
 }
 
+.btn_disabled {
+  background-color: #6fe33550;
+}
 .btn_prev::before {
   content: '';
   width: 8px;
