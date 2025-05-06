@@ -81,7 +81,7 @@ export const RickAndMorty: React.FC = () => {
   }, []);
 
   return (
-    <LayoutPage classname={classes.rickandmortyBackground}>
+    <LayoutPage classname={classes.rickAndMortyBg}>
       <Link className={classStyleMain.backPage} to={routes.select}>
         Back to select
       </Link>
@@ -104,14 +104,18 @@ export const RickAndMorty: React.FC = () => {
         sx={{ gap: '50px', marginTop: 'auto' }}
       >
         {characters.map((character) => (
-          <Link to={`/character/${character.id}`} key={character.id}>
+          <Link
+            to={`/character/${character.id}`}
+            key={character.id}
+            title={`Click to see ${character.name}`}
+          >
             <CardCharacter
               character={character}
               classname={`${
                 character.status === 'Alive' ? classes.alive : null
               } ${character.status === 'Dead' ? classes.dead : null} ${
                 character.status === 'unknown' ? classes.unknown : null
-              }`}
+              } ${classes.cardCharacter}`}
             />
           </Link>
         ))}
@@ -128,7 +132,7 @@ export const RickAndMorty: React.FC = () => {
           Prev
         </BtnPagination>
 
-        <p>{`${countPrevPage ?? 0} of ${countNextPage ?? 0}`}</p>
+        <p>{`${countPrevPage ?? 1} of ${countNextPage ?? 1}`}</p>
         <BtnPagination
           onclickNext={handlerNextPage}
           classname={`${classBtn.btnNext} ${classBtn.btn}`}

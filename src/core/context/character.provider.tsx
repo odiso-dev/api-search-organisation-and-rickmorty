@@ -1,4 +1,4 @@
-import React /* , { Dispatch, SetStateAction } */ from 'react';
+import React from 'react';
 
 import { CharacterVm } from '@/pages/character.vm';
 import {

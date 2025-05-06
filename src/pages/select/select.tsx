@@ -8,10 +8,10 @@ import { Card, CardContent, CardMedia } from '@mui/material/';
 
 export const SelectPage: React.FC = () => {
   return (
-    <LayoutPage>
+    <LayoutPage classname={classes.LayoutSelectPage}>
       <h1>Select an option</h1>
       <div className={classes.layoutCards}>
-        <Card sx={{ borderRadius: '8px' }}>
+        <Card sx={{ borderRadius: '8px' }} className={classes.organisationCard}>
           <Link to={routes.organisation}>
             <CardContent sx={{ textAlign: 'center' }}>
               <h3>Organisation</h3>
@@ -24,7 +24,7 @@ export const SelectPage: React.FC = () => {
           </Link>
         </Card>
 
-        <Card sx={{ borderRadius: '8px' }}>
+        <Card sx={{ borderRadius: '8px' }} className={classes.rickAndMortyCard}>
           <Link to={routes.rickandmorty}>
             <CardContent sx={{ textAlign: 'center' }}>
               <h3>Rick&Morty</h3>

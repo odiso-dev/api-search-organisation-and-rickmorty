@@ -12,3 +12,30 @@
   display: block;
   height: 300px;
 }
+
+.LayoutSelectPage:has(.organisationCard:hover)::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: center / cover no-repeat
+    url(https://media.licdn.com/dms/image/v2/C4D0BAQGxXUBNYIpJWQ/company-logo_200_200/company-logo_200_200/0/1630484286517/lemoncode_freelancers_logo?e=2147483647&v=beta&t=7dsUFxFjHN9JjV0iOANdojuXYCs3a4cQswbv8a514x8);
+  mask-image: linear-gradient(to top, #fff 65%, transparent 100%);
+  opacity: 0.2;
+}
+.LayoutSelectPage:has(.rickAndMortyCard:hover)::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: center / cover no-repeat
+    url(https://i.blogs.es/cfa26e/rickandmortycabecera/650_1200.jpg);
+  mask-image: linear-gradient(to top, #fff 65%, transparent 100%);
+  opacity: 0.2;
+}
