@@ -1,23 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { routes } from '@/core/router';
+import { routes } from '@/core/router/routes';
 import classes from './select.module.css';
-import { LayoutPage } from '../layout-page/table-layout';
+import { LayoutInnerPage } from '@/components/layout/layout-inner-page';
+import classStyleMain from '@/styles.css';
 /* MUI */
 import { Card, CardContent, CardMedia } from '@mui/material/';
 
 export const SelectPage: React.FC = () => {
   return (
-    <LayoutPage classname={classes.LayoutSelectPage}>
+    <LayoutInnerPage classname={classes.LayoutSelectPage}>
+      <Link to={routes.root} className={classStyleMain.backPage}>
+        Back to select
+      </Link>
       <h1>Select an option</h1>
       <div className={classes.layoutCards}>
         <Card sx={{ borderRadius: '8px' }} className={classes.organisationCard}>
-          <Link to={routes.organisation}>
+          <Link to={routes.root}>
             <CardContent sx={{ textAlign: 'center' }}>
-              <h3>Organisation</h3>
+              <h2>Organisation</h2>
               <CardMedia
                 component="img"
-                image="https://media.licdn.com/dms/image/v2/C4D0BAQGxXUBNYIpJWQ/company-logo_200_200/company-logo_200_200/0/1630484286517/lemoncode_freelancers_logo?e=2147483647&v=beta&t=7dsUFxFjHN9JjV0iOANdojuXYCs3a4cQswbv8a514x8"
+                image="https://www.edubreak.de/wp-content/uploads/2024/02/eb-Website-Blog-Titelbild-Wissensmanagement-min-2.png"
                 alt="search organisation"
               ></CardMedia>
             </CardContent>
@@ -27,7 +31,7 @@ export const SelectPage: React.FC = () => {
         <Card sx={{ borderRadius: '8px' }} className={classes.rickAndMortyCard}>
           <Link to={routes.rickandmorty}>
             <CardContent sx={{ textAlign: 'center' }}>
-              <h3>Rick&Morty</h3>
+              <h2>Rick&Morty</h2>
               <CardMedia
                 sx={{ objectFit: 'content' }}
                 component="img"
@@ -38,6 +42,6 @@ export const SelectPage: React.FC = () => {
           </Link>
         </Card>
       </div>
-    </LayoutPage>
+    </LayoutInnerPage>
   );
 };

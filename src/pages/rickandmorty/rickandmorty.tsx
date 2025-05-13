@@ -6,7 +6,7 @@ import { routes } from '@/core/router';
 import { debounce } from 'lodash';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LayoutPage } from '../layout-page/table-layout';
+import { LayoutInnerPage } from '@/components/layout/layout-inner-page/';
 import classes from './rickandmorty.module.css';
 import classStyleMain from '@/styles.css';
 import { BtnPagination } from '@/components/button.pagination';
@@ -81,7 +81,7 @@ export const RickAndMorty: React.FC = () => {
   }, []);
 
   return (
-    <LayoutPage classname={classes.rickAndMortyBg}>
+    <LayoutInnerPage classname={classes.rickAndMortyBg}>
       <Link className={classStyleMain.backPage} to={routes.select}>
         Back to select
       </Link>
@@ -94,7 +94,10 @@ export const RickAndMorty: React.FC = () => {
             inputRef={inputRef}
             click={click}
           />
-          <ButtonSearch onclick={handleButtonSearch} />
+          <ButtonSearch
+            classname={classes.buttonSearch}
+            onclick={handleButtonSearch}
+          />
         </form>
       </div>
       <Grid
@@ -141,6 +144,6 @@ export const RickAndMorty: React.FC = () => {
           Next
         </BtnPagination>
       </div>
-    </LayoutPage>
+    </LayoutInnerPage>
   );
 };

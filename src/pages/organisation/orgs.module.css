@@ -22,3 +22,7 @@
   gap: 1rem;
   margin: 2rem 0;
 }
+.button-search {
+  background-color: #2f4858;
+  color: #fff;
+}

@@ -4,10 +4,11 @@ import { InputSearch } from '@/components/input-organisation';
 import { ButtonSearch } from '@/components/button-search';
 import { MemberTable } from '@/components/member-table';
 import { debounce } from 'lodash';
-import { LayoutPage } from '@/pages/layout-page/table-layout';
+import { LayoutInnerPage } from '@/components/layout/layout-inner-page';
 import classes from './orgs.module.css';
 import { MembersListContext } from '@/core/context';
 import { routes } from '@/core/router';
+import classStyleMain from '@/styles.css';
 
 export const OrgsPage: React.FC = () => {
   const {
@@ -42,9 +43,11 @@ export const OrgsPage: React.FC = () => {
   }, []);
 
   return (
-    <LayoutPage>
-      <Link to={routes.select}>Back to select</Link>
-      <h2>Filter by organisation</h2>
+    <LayoutInnerPage>
+      <Link to={routes.select} className={classStyleMain.backPage}>
+        Back to select
+      </Link>
+      <h1>Filter by organisation</h1>
       <form className={classes.searchItems}>
         <InputSearch
           onchange={handleInputSearch}
@@ -52,9 +55,12 @@ export const OrgsPage: React.FC = () => {
           inputRef={inputRef}
           click={click}
         />
-        <ButtonSearch onclick={handleButtonSearch} />
+        <ButtonSearch
+          classname={classes.buttonSearch}
+          onclick={handleButtonSearch}
+        />
       </form>
       <MemberTable members={members} />
-    </LayoutPage>
+    </LayoutInnerPage>
   );
 };

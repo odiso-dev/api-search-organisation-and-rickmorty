@@ -8,9 +8,11 @@
 
 .layoutCards img {
   width: 250px;
-  object-fit: scale-down;
-  display: block;
   height: 300px;
+  display: block;
+}
+.layoutCards h2 {
+  color: initial;
 }
 
 .LayoutSelectPage:has(.organisationCard:hover)::before {
@@ -22,7 +24,7 @@
   left: 0;
   z-index: -1;
   background: center / cover no-repeat
-    url(https://media.licdn.com/dms/image/v2/C4D0BAQGxXUBNYIpJWQ/company-logo_200_200/company-logo_200_200/0/1630484286517/lemoncode_freelancers_logo?e=2147483647&v=beta&t=7dsUFxFjHN9JjV0iOANdojuXYCs3a4cQswbv8a514x8);
+    url(https://www.edubreak.de/wp-content/uploads/2024/02/eb-Website-Blog-Titelbild-Wissensmanagement-min-2.png);
   mask-image: linear-gradient(to top, #fff 65%, transparent 100%);
   opacity: 0.2;
 }

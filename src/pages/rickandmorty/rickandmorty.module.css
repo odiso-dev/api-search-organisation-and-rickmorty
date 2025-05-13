@@ -26,10 +26,10 @@
   width: 350px;
   margin: 30px auto;
 }
-
 .cardCharacter:hover img {
   transform: rotateY(180deg);
 }
+
 .rick-and-mortyBg {
   background: linear-gradient(
     -45deg,
@@ -45,6 +45,10 @@
   );
   background-size: 400% 400%;
   animation: bg-gradient 10s ease infinite;
+}
+.button-search {
+  background-color: #6fe335;
+  color: #000;
 }
 
 @keyframes bg-gradient {

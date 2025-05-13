@@ -1,6 +1,3 @@
-.layoutMember {
-  padding: 2rem;
-}
 .memberCard {
   width: min(30%, 400px);
   padding: 1rem;
@@ -12,23 +9,24 @@
   justify-content: center;
   gap: 1rem;
   font-weight: 600;
+  margin: 60px 0 0 0;
 }
 .detail_img {
   width: 80%;
   display: block;
-  border-radius: 50%;
+  border-radius: 8px;
 }
 .alive {
   background-color: #2dff2d10 !important;
-  animation: alive 3s infinite alternate;
+  animation: alive 2s infinite alternate;
 }
 .dead {
   background-color: #fa837a10 !important;
-  animation: dead 3s infinite alternate;
+  animation: dead 2s infinite alternate;
 }
 .unknown {
   background-color: #f0950d10 !important;
-  animation: unknown 3s infinite alternate;
+  animation: unknown 2s infinite alternate;
 }
 
 /* Border animation */
