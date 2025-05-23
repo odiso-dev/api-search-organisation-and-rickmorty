@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import classes from './login.module.css';
 import { routes } from '@/core/router';
 import { UserNameContext } from '@/core/context/username.provider';
+import { ButtonSearch } from '@/components/button-search';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -18,7 +19,9 @@ export const LoginPage: React.FC = () => {
 
   const handleNavigation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    username !== '' ? navigate(routes.select) : alert('You must write a name');
+    username !== ''
+      ? navigate(routes.select)
+      : alert('You must write a user name');
   };
   const handlerUserName = () => setName(`Welcome ${username}`);
 
@@ -29,7 +32,7 @@ export const LoginPage: React.FC = () => {
           <h2>Access</h2>
           <div className={classes.flex}>
             <div>
-              <label>User name: </label>
+              <label>Name: </label>
               <input
                 ref={inputRef}
                 value={username}
@@ -39,9 +42,12 @@ export const LoginPage: React.FC = () => {
                 }}
               />
             </div>
-            <button type="submit" onClick={handlerUserName}>
+            <ButtonSearch
+              classname={classes.buttonSearch}
+              onclick={handlerUserName}
+            >
               Login
-            </button>
+            </ButtonSearch>
           </div>
         </form>
       </div>

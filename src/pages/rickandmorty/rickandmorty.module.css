@@ -29,6 +29,10 @@
 .cardCharacter:hover img {
   transform: rotateY(180deg);
 }
+.button-search {
+  background-color: #6fe335;
+  color: #000;
+}
 
 .rick-and-mortyBg {
   background: linear-gradient(
@@ -45,10 +49,6 @@
   );
   background-size: 400% 400%;
   animation: bg-gradient 10s ease infinite;
-}
-.button-search {
-  background-color: #6fe335;
-  color: #000;
 }
 
 @keyframes bg-gradient {

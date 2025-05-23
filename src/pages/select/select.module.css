@@ -23,8 +23,7 @@
   top: 0;
   left: 0;
   z-index: -1;
-  background: center / cover no-repeat
-    url(https://www.edubreak.de/wp-content/uploads/2024/02/eb-Website-Blog-Titelbild-Wissensmanagement-min-2.png);
+  background: center / cover no-repeat url(../../assets/img-organisation.png);
   mask-image: linear-gradient(to top, #fff 65%, transparent 100%);
   opacity: 0.2;
 }
@@ -36,8 +35,7 @@
   top: 0;
   left: 0;
   z-index: -1;
-  background: center / cover no-repeat
-    url(https://i.blogs.es/cfa26e/rickandmortycabecera/650_1200.jpg);
+  background: center / cover no-repeat url(../../assets/img-rickandmorty.jpg);
   mask-image: linear-gradient(to top, #fff 65%, transparent 100%);
   opacity: 0.2;
 }

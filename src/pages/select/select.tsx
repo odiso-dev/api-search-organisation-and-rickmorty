@@ -3,27 +3,21 @@ import { Link } from 'react-router-dom';
 import { routes } from '@/core/router/routes';
 import classes from './select.module.css';
 import { LayoutInnerPage } from '@/components/layout/layout-inner-page';
-import classStyleMain from '@/styles.css';
+import imgOrganisation from '@/assets/img-organisation.png';
+import imgRickAndMorty from '@/assets/img-rickandmorty.jpg';
 /* MUI */
 import { Card, CardContent, CardMedia } from '@mui/material/';
 
 export const SelectPage: React.FC = () => {
   return (
     <LayoutInnerPage classname={classes.LayoutSelectPage}>
-      <Link to={routes.root} className={classStyleMain.backPage}>
-        Back to select
-      </Link>
       <h1>Select an option</h1>
       <div className={classes.layoutCards}>
         <Card sx={{ borderRadius: '8px' }} className={classes.organisationCard}>
-          <Link to={routes.root}>
+          <Link to={routes.organisation}>
             <CardContent sx={{ textAlign: 'center' }}>
               <h2>Organisation</h2>
-              <CardMedia
-                component="img"
-                image="https://www.edubreak.de/wp-content/uploads/2024/02/eb-Website-Blog-Titelbild-Wissensmanagement-min-2.png"
-                alt="search organisation"
-              ></CardMedia>
+              <CardMedia component="img" image={imgOrganisation}></CardMedia>
             </CardContent>
           </Link>
         </Card>
@@ -35,7 +29,7 @@ export const SelectPage: React.FC = () => {
               <CardMedia
                 sx={{ objectFit: 'content' }}
                 component="img"
-                image="https://i.blogs.es/cfa26e/rickandmortycabecera/650_1200.jpg"
+                image={imgRickAndMorty}
                 alt="Ricky and Morty"
               ></CardMedia>
             </CardContent>

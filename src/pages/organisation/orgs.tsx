@@ -9,6 +9,8 @@ import classes from './orgs.module.css';
 import { MembersListContext } from '@/core/context';
 import { routes } from '@/core/router';
 import classStyleMain from '@/styles.css';
+// import { BtnPagination } from '@/components/button.pagination';
+// import classBtn from '@/components/button-pagination.module.css';
 
 export const OrgsPage: React.FC = () => {
   const {
@@ -58,7 +60,9 @@ export const OrgsPage: React.FC = () => {
         <ButtonSearch
           classname={classes.buttonSearch}
           onclick={handleButtonSearch}
-        />
+        >
+          Search
+        </ButtonSearch>
       </form>
       <MemberTable members={members} />
     </LayoutInnerPage>

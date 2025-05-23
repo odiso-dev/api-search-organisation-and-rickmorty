@@ -28,7 +28,6 @@ interface CharacterContextType {
   info: any;
   urlApiBase: string;
   setUrlApiBase: (value: string) => void;
-  // setUrlApiBase: (value: string | ((prevValue: string) => string)) => void;
   countPrevPage: number | null;
   countNextPage: number | null;
   setCountPrevPage: (

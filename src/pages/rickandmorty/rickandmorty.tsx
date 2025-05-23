@@ -81,69 +81,73 @@ export const RickAndMorty: React.FC = () => {
   }, []);
 
   return (
-    <LayoutInnerPage classname={classes.rickAndMortyBg}>
-      <Link className={classStyleMain.backPage} to={routes.select}>
-        Back to select
-      </Link>
-      <h1>Rick and Morty search characters</h1>
-      <div>
-        <form className={classes.searchItems}>
-          <InputSearch
-            onchange={handleInputSearch}
-            placeholder={inputValue}
-            inputRef={inputRef}
-            click={click}
-          />
-          <ButtonSearch
-            classname={classes.buttonSearch}
-            onclick={handleButtonSearch}
-          />
-        </form>
-      </div>
-      <Grid
-        container
-        spacing={3}
-        className={classes.gridContent}
-        sx={{ gap: '50px', marginTop: 'auto' }}
-      >
-        {characters.map((character) => (
-          <Link
-            to={`/character/${character.id}`}
-            key={character.id}
-            title={`Click to see ${character.name}`}
-          >
-            <CardCharacter
-              character={character}
-              classname={`${
-                character.status === 'Alive' ? classes.alive : null
-              } ${character.status === 'Dead' ? classes.dead : null} ${
-                character.status === 'unknown' ? classes.unknown : null
-              } ${classes.cardCharacter}`}
+    <div className={classes.rickAndMortyBg}>
+      <LayoutInnerPage>
+        <Link className={classStyleMain.backPage} to={routes.select}>
+          Back to select
+        </Link>
+        <h1>Rick and Morty search characters</h1>
+        <div>
+          <form className={classes.searchItems}>
+            <InputSearch
+              onchange={handleInputSearch}
+              placeholder={inputValue}
+              inputRef={inputRef}
+              click={click}
             />
-          </Link>
-        ))}
-      </Grid>
-
-      <div className={classes.flex}>
-        <BtnPagination
-          onclickPrev={handlerPrevPage}
-          classname={`${classBtn.btnPrev} ${classBtn.btn} ${
-            !info?.prev ? classBtn.btnDisabled : ''
-          }`}
-          isDisabled={!info?.prev}
+            <ButtonSearch
+              classname={classes.buttonSearch}
+              onclick={handleButtonSearch}
+            >
+              Search
+            </ButtonSearch>
+          </form>
+        </div>
+        <Grid
+          container
+          spacing={3}
+          className={classes.gridContent}
+          sx={{ gap: '50px', marginTop: 'auto' }}
         >
-          Prev
-        </BtnPagination>
+          {characters.map((character) => (
+            <Link
+              to={`/character/${character.id}`}
+              key={character.id}
+              title={`Click to see ${character.name}`}
+            >
+              <CardCharacter
+                character={character}
+                classname={`${
+                  character.status === 'Alive' ? classes.alive : null
+                } ${character.status === 'Dead' ? classes.dead : null} ${
+                  character.status === 'unknown' ? classes.unknown : null
+                } ${classes.cardCharacter}`}
+              />
+            </Link>
+          ))}
+        </Grid>
 
-        <p>{`${countPrevPage ?? 1} of ${countNextPage ?? 1}`}</p>
-        <BtnPagination
-          onclickNext={handlerNextPage}
-          classname={`${classBtn.btnNext} ${classBtn.btn}`}
-          isDisabled={!info?.next}
-        >
-          Next
-        </BtnPagination>
-      </div>
-    </LayoutInnerPage>
+        <div className={classes.flex}>
+          <BtnPagination
+            onclickPrev={handlerPrevPage}
+            classname={`${classBtn.btnPrev} ${classBtn.btn} ${
+              !info?.prev ? classBtn.btnDisabled : ''
+            }`}
+            isDisabled={!info?.prev}
+          >
+            Prev
+          </BtnPagination>
+
+          <p>{`${countPrevPage ?? 1} of ${countNextPage ?? 1}`}</p>
+          <BtnPagination
+            onclickNext={handlerNextPage}
+            classname={`${classBtn.btnNext} ${classBtn.btn}`}
+            isDisabled={!info?.next}
+          >
+            Next
+          </BtnPagination>
+        </div>
+      </LayoutInnerPage>
+    </div>
   );
 };

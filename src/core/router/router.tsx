@@ -14,11 +14,11 @@ import { UserNameProvider } from '@/core/context/username.provider';
 
 export const RouterApp: React.FC = () => {
   return (
-    <UserNameProvider>
-      <LayoutPage>
-        <MembersListProvider>
-          <CharacterListProvider>
-            <Router>
+    <Router>
+      <UserNameProvider>
+        <LayoutPage>
+          <MembersListProvider>
+            <CharacterListProvider>
               <Routes>
                 <Route path={routes.root} element={<LoginPage />} />
                 <Route path={routes.select} element={<SelectPage />} />
@@ -30,10 +30,10 @@ export const RouterApp: React.FC = () => {
                   element={<DetailCharacter />}
                 />
               </Routes>
-            </Router>
-          </CharacterListProvider>
-        </MembersListProvider>
-      </LayoutPage>
-    </UserNameProvider>
+            </CharacterListProvider>
+          </MembersListProvider>
+        </LayoutPage>
+      </UserNameProvider>
+    </Router>
   );
 };
