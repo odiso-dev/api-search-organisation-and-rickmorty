@@ -9,3 +9,8 @@ table {
 img {
   width: 80px;
 }
+
+.scroll_content {
+  height: 70vh;
+  overflow: auto;
+}

@@ -66,8 +66,6 @@ export const RickAndMorty: React.FC = () => {
   const handlerNextPage = () => {
     if (nextPage) {
       setUrlApiBase(nextPage);
-
-      console.warn(`nextPage=> ${nextPage}`);
       setCountPrevPage((prevCount: number | null) =>
         prevCount !== null ? prevCount + 1 : (info?.pages || 1) + 1
       );

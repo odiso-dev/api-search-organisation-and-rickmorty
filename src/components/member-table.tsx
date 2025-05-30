@@ -20,7 +20,7 @@ interface Props {
 export const MemberTable: React.FC<Props> = (props) => {
   const { members } = props;
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className={classes.scrollContent}>
       <Table>
         <TableHead>
           <TableRow

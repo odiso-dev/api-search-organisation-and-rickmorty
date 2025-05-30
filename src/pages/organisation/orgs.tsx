@@ -9,15 +9,19 @@ import classes from './orgs.module.css';
 import { MembersListContext } from '@/core/context';
 import { routes } from '@/core/router';
 import classStyleMain from '@/styles.css';
-// import { BtnPagination } from '@/components/button.pagination';
-// import classBtn from '@/components/button-pagination.module.css';
+/* MUI */
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 export const OrgsPage: React.FC = () => {
   const {
     members,
     apiOrganisationCurrentValue: fetchCurrentValue,
     setApiOrganisationCurrentValue: setFetchCurrentValue,
+    totalPages,
+    handlePagination,
   } = React.useContext(MembersListContext);
+  const [page /* , setPage */] = React.useState(0);
 
   const [inputValue, setInputValue] = React.useState(fetchCurrentValue);
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -65,6 +69,17 @@ export const OrgsPage: React.FC = () => {
         </ButtonSearch>
       </form>
       <MemberTable members={members} />
+      <div className={classes.flex}>
+        <Stack spacing={2}>
+          <Pagination
+            hidePrevButton
+            hideNextButton
+            count={totalPages}
+            page={page}
+            onChange={handlePagination}
+          />
+        </Stack>
+      </div>
     </LayoutInnerPage>
   );
 };
