@@ -10,7 +10,7 @@ export const LayoutInnerPage: React.FC<Props> = (props) => {
   const { children, classname } = props;
   return (
     <div
-      className={`${classes.layoutPage} ${classname} rickandmorty organisation`}
+      className={`${classes.layoutInnerPage} ${classname} rickandmorty organisation`}
     >
       {children}
     </div>

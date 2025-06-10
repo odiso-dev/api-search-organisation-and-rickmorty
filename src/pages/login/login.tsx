@@ -20,10 +20,9 @@ export const LoginPage: React.FC = () => {
   const handleNavigation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     username !== ''
-      ? navigate(routes.select)
+      ? (setName(`Welcome ${username}`), navigate(routes.select))
       : alert('You must write a user name');
   };
-  const handlerUserName = () => setName(`Welcome ${username}`);
 
   return (
     <>
@@ -42,12 +41,7 @@ export const LoginPage: React.FC = () => {
                 }}
               />
             </div>
-            <ButtonSearch
-              classname={classes.buttonSearch}
-              onclick={handlerUserName}
-            >
-              Login
-            </ButtonSearch>
+            <ButtonSearch classname={classes.buttonSearch}>Login</ButtonSearch>
           </div>
         </form>
       </div>

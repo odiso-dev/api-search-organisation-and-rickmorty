@@ -18,13 +18,18 @@ export const OrgsPage: React.FC = () => {
     members,
     apiOrganisationCurrentValue: fetchCurrentValue,
     setApiOrganisationCurrentValue: setFetchCurrentValue,
-    totalPages,
-    handlePagination,
   } = React.useContext(MembersListContext);
-  const [page /* , setPage */] = React.useState(0);
 
   const [inputValue, setInputValue] = React.useState(fetchCurrentValue);
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const [page, setPage] = React.useState(1);
+  const itemsPerPage = 12;
+
+  React.useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   const click = (e) => {
     e.target.value = '';
@@ -42,11 +47,18 @@ export const OrgsPage: React.FC = () => {
     setFetchCurrentValue(inputValue);
   };
 
-  React.useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
+  const totalPages = Math.ceil(members.length / itemsPerPage);
+  const visibleMembers = members.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
+
+  const handlePagination = (
+    _event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setPage(value);
+  };
 
   return (
     <LayoutInnerPage>
@@ -68,12 +80,10 @@ export const OrgsPage: React.FC = () => {
           Search
         </ButtonSearch>
       </form>
-      <MemberTable members={members} />
+      <MemberTable members={visibleMembers} />
       <div className={classes.flex}>
         <Stack spacing={2}>
           <Pagination
-            hidePrevButton
-            hideNextButton
             count={totalPages}
             page={page}
             onChange={handlePagination}

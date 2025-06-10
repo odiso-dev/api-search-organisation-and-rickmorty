@@ -4,6 +4,7 @@
   align-items: center;
   gap: 4rem;
   height: 90vh;
+  flex-wrap: wrap;
 }
 
 .layoutCards img {

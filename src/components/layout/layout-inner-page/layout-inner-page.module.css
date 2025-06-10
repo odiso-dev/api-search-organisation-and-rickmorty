@@ -6,9 +6,10 @@ p {
   font-size: 16px;
 }
 
-.layout-page {
-  width: 70%;
-  max-width: 1200px;
+.layout-inner-page {
+  width: 80%;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 2rem 0;
+  height: 100vh;
 }

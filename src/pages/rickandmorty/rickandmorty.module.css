@@ -7,6 +7,14 @@
 .grid_content {
   height: 70vh;
   overflow: auto;
+  justify-content: center;
+  padding: 50px 16px 0;
+}
+.grid_content img {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 .alive {
   background-color: #2dff2d10 !important;
@@ -24,7 +32,7 @@
   display: flex;
   justify-content: space-around;
   width: 350px;
-  margin: 30px auto;
+  margin: 16px auto;
 }
 .cardCharacter:hover img {
   transform: rotateY(180deg);

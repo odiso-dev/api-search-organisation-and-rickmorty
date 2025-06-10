@@ -14,17 +14,17 @@ export const CardCharacter: React.FC<Props> = (props) => {
     <Card
       sx={{
         borderRadius: '8px',
-        padding: '16px',
-        scale: '.9',
         textAlign: 'center',
       }}
       className={classname}
     >
-      <h2 style={{ width: '24ch' }}>{character.name}</h2>
+      <h2 style={{ width: '20ch' }}>{character.name}</h2>
       <h3>{character.gender}</h3>
-      <CardContent>
+      <CardContent sx={{ padding: '0' }}>
         <CardMedia
-          sx={{ borderRadius: '8px' }}
+          sx={{
+            borderRadius: '8px',
+          }}
           component="img"
           image={character.image}
         ></CardMedia>
