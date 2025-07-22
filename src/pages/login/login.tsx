@@ -28,7 +28,7 @@ export const LoginPage: React.FC = () => {
     <>
       <div className={classes.wrapperForm}>
         <form className={classes.form} onSubmit={handleNavigation}>
-          <h2>Access</h2>
+          <h2>Gives a username</h2>
           <div className={classes.flex}>
             <div>
               <label>Name: </label>
